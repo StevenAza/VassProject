@@ -1,0 +1,15 @@
+@import "../../../assets/scss/mixin";
+.back_container {
+    .btn--back {
+        background-color: #c5c5f0;
+        padding: 1em;
+        height: 3em;
+        width: 3em;
+        border-radius: 50%;
+        border: none;
+        @include centerAll(row);
+        i {
+            font-size: 2em;
+        }
+    }
+}

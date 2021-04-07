@@ -1,0 +1,35 @@
+@import "../../../assets/scss/mixin";
+.detail_container {
+  .button--back {
+    position: absolute;
+    top: 2em;
+    left: 2em;
+  }
+  .detail__banner {
+    .banner__ilustration {
+      svg {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        z-index: -1;
+      }
+    }
+    .banner__principal {
+      padding: 4em;
+      margin-top: 2em;
+    }
+  }
+  .section_profile {
+    &__sticky {
+        background-color: rgb(231, 231, 231);
+        border-radius: 10px;
+        @include boxhadow;
+    }
+    &__info {
+      .work__card {
+        background-color: #f2f8f7;
+        padding: 1.8em;
+      }
+    }
+  }
+}

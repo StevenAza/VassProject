@@ -1,0 +1,115 @@
+<div class="detail_container row">
+  <div class="button--back">
+    <app-back></app-back>
+  </div>
+  <div class="detail__banner">
+    <div class="banner__ilustration">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#a2d9ff" fill-opacity="1" d="M0,96L48,90.7C96,85,192,75,288,106.7C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,138.7C1248,139,1344,117,1392,106.7L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+    </div>
+    <div class="banner__principal">
+      <div class="banner__principal__name">
+        <h1> {{ dataPeople?.name }} </h1>
+      </div>
+    </div>
+  </div>
+  <div class="main__content">
+  <div class="container container-xl">
+    <div class="row">
+      <div class="detail__section section_profile col-md-6">
+        <div class="section_profile__sticky profile_info">
+          <div class="profile_info__username">
+            <i class="las la-user-circle"></i>
+              <p> {{ dataPeople?.username }} </p>
+          </div>
+          <div class="profile_info__email">
+            <i class="las la-envelope"></i>
+            <p> {{ dataPeople?.email }} </p>
+          </div>
+          <div class="profile_info__address">
+            <i class="las la-map-marker-alt"></i>
+            <p> Address: {{ dataPeople?.address?.street }} </p>
+          </div>
+          <div class="profile_info__suite">
+            <i class="las la-building"></i>
+            <p> Suite: {{ dataPeople?.address?.suite }} </p>
+          </div>
+          <div class="profile_info__city">
+            <i class="las la-city"></i>
+            <p> City: {{ dataPeople?.address?.city }} </p>
+          </div>
+          <div class="profile_info__zip">
+            <i class="las la-map"></i>
+            <p> Zipcode : {{ dataPeople?.address?.zipcode }} </p>
+          </div>
+          <div class="profile_info__geo">
+            <div class="profile_info__geo__lat">
+              <i class="las la-globe-americas"></i>
+              <p> lat: {{ dataPeople?.address?.geo?.lat }} </p>
+            </div>
+            <div class="profile_info__geo__long">
+              <i class="las la-globe-americas"></i>
+              <p> long: {{ dataPeople?.address?.geo?.lng }} </p>
+            </div>
+          </div>
+          <div class="profile_info__phone">
+            <i class="las la-phone-volume"></i>
+            <p> Telephone: {{ dataPeople?.phone }} </p>
+          </div>
+          <div class="profile_info__website">
+            <i class="las la-external-link-alt"></i>
+            <p> Website: {{ dataPeople?.website }} </p>
+          </div>
+  
+              <div class="work_card__icon">
+                <i class="las la-briefcase"></i>
+              </div>
+              <div class="work_card__title">
+                    <p>Company</p>
+              </div>
+              <div class="work_card__name"> 
+  
+                <p>Name:  {{ dataPeople?.company?.name }}</p>
+              </div>
+              <div class="work_card__catchpr">
+  
+                 <p>Catchphrases : {{ dataPeople?.company?.catchPhrase }}</p>
+                </div>
+              <div class="word_card__bs">
+                
+                <p>bs : {{ dataPeople?.company?.bs }}</p>
+              </div>
+              
+        </div>
+      </div>
+      <div class="add_post_section col-md-6">
+        <div class="add_post_section__actions">
+          <button type="button" (click)="showDialog()">AGREGAR POST</button>
+        </div>
+        <ul class="add_post__container list-group list-group-flush" *ngFor="let itemP of dataPost">
+          <li class="add_post__item list-group-item">
+              <h4>{{ itemP.title }} </h4>   
+              {{ itemP.body }}
+          </li>
+        </ul>
+        <div class="form__post" *ngIf="postvisible">
+          
+          <form  [formGroup]="formGroup">
+            <div class="mb-3 post__item">
+              <label for="titlepost" class="form-label post__item__label">Title</label>
+              <input type="text" name="titlepost"  formControlName="titlepost" class="form-control post__item__body" id="titlepost">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Body</label>
+              <textarea class="form-control" name="bodypost"  formControlName="bodypost" id="bodypost" ></textarea>
+            </div>
+            <div class="form_action">
+                <button class="form_action__btn" (click)="addPost()">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+</div>
