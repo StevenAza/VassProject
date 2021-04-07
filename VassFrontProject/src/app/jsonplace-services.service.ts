@@ -23,11 +23,20 @@ export class JsonplaceServicesService {
     });
     return this.http.post(url, objP, { headers });
   }
-  deleteM(pathS:string) {
-
+  deleteM(pathD:string) {
+    const url = `https://jsonplaceholder.typicode.com/${pathD}`;
+    let headers = new HttpHeaders({
+      'Content-Type':'application/json',
+      'Accept': '*/*'
+    });
+    return this.http.delete(url);
   }
-  putM(pathS:string) {
-
+  putM(pathS:string, objP: any) {
+    const url = `https://jsonplaceholder.typicode.com/${pathS}`;
+    let headers = new HttpHeaders({
+      'Content-Type':'application/json',
+    });
+    return this.http.put(url, objP, { headers });
   }
   getAllUsers() {
     return this.getM('users');
@@ -40,5 +49,14 @@ export class JsonplaceServicesService {
   }
   getPostUser(idUser) {
     return this.getM(`users/${idUser}/posts`)
+  }
+  deteleUser(idPost) {
+    return this.deleteM(`posts/${idPost}`);
+  }
+  updatePost(idPost, objUpd) {
+    return this.putM(`posts/${idPost}`, objUpd);
+  }
+  getPost(idPost) {
+    return this.getM(`posts/${idPost}`);
   }
 }

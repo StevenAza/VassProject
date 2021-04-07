@@ -15,92 +15,96 @@
   <div class="main__content">
   <div class="container container-xl">
     <div class="row">
-      <div class="detail__section section_profile col-md-6">
+      <div class="detail__section section_profile col-md-6 col-xs-12 col-xl-6 col-lg-6">
         <div class="section_profile__sticky profile_info">
-          <div class="profile_info__username">
+          <div class="profile_info__username profile_info__item">
             <i class="las la-user-circle"></i>
               <p> {{ dataPeople?.username }} </p>
           </div>
-          <div class="profile_info__email">
+          <div class="profile_info__email  profile_info__item">
             <i class="las la-envelope"></i>
             <p> {{ dataPeople?.email }} </p>
           </div>
-          <div class="profile_info__address">
+          <div class="profile_info__address  profile_info__item">
             <i class="las la-map-marker-alt"></i>
             <p> Address: {{ dataPeople?.address?.street }} </p>
           </div>
-          <div class="profile_info__suite">
+          <div class="profile_info__suite  profile_info__item">
             <i class="las la-building"></i>
             <p> Suite: {{ dataPeople?.address?.suite }} </p>
           </div>
-          <div class="profile_info__city">
+          <div class="profile_info__city  profile_info__item">
             <i class="las la-city"></i>
             <p> City: {{ dataPeople?.address?.city }} </p>
           </div>
-          <div class="profile_info__zip">
+          <div class="profile_info__zip  profile_info__item">
             <i class="las la-map"></i>
             <p> Zipcode : {{ dataPeople?.address?.zipcode }} </p>
           </div>
-          <div class="profile_info__geo">
-            <div class="profile_info__geo__lat">
-              <i class="las la-globe-americas"></i>
-              <p> lat: {{ dataPeople?.address?.geo?.lat }} </p>
-            </div>
-            <div class="profile_info__geo__long">
-              <i class="las la-globe-americas"></i>
-              <p> long: {{ dataPeople?.address?.geo?.lng }} </p>
-            </div>
-          </div>
-          <div class="profile_info__phone">
+     
+          <div class="profile_info__phone profile_info__item">
             <i class="las la-phone-volume"></i>
             <p> Telephone: {{ dataPeople?.phone }} </p>
           </div>
-          <div class="profile_info__website">
+          <div class="profile_info__website  profile_info__item">
             <i class="las la-external-link-alt"></i>
             <p> Website: {{ dataPeople?.website }} </p>
           </div>
-  
+          <div class="work__card">
+            <div class="work__card__title">
               <div class="work_card__icon">
                 <i class="las la-briefcase"></i>
               </div>
               <div class="work_card__title">
                     <p>Company</p>
               </div>
-              <div class="work_card__name"> 
+            </div>
   
-                <p>Name:  {{ dataPeople?.company?.name }}</p>
+            <div class="work_card__name work_card__item"> 
+
+              <p>Name:  {{ dataPeople?.company?.name }}</p>
+            </div>
+            <div class="work_card__catchpr work_card__item">
+
+               <p>Catchphrases : {{ dataPeople?.company?.catchPhrase }}</p>
               </div>
-              <div class="work_card__catchpr">
-  
-                 <p>Catchphrases : {{ dataPeople?.company?.catchPhrase }}</p>
-                </div>
-              <div class="word_card__bs">
-                
-                <p>bs : {{ dataPeople?.company?.bs }}</p>
-              </div>
+            <div class="word_card__bs work_card__item">
               
+              <p>bs : {{ dataPeople?.company?.bs }}</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="add_post_section col-md-6">
+      <div class="add_post_section col-md-6 col-md-6 col-xs-12 col-xl-6 col-lg-6">
         <div class="add_post_section__actions">
           <button type="button" (click)="showDialog()">AGREGAR POST</button>
         </div>
         <ul class="add_post__container list-group list-group-flush" *ngFor="let itemP of dataPost">
           <li class="add_post__item list-group-item">
-              <h4>{{ itemP.title }} </h4>   
+            <div class="action__addpost">
+              <button class="btn--delete btn__addpost" (click)="deletePost(itemP.id)" type="button"><i class="las la-trash-alt"></i></button>
+              <button class="btn--update btn__addpost" (click)="showUpdate(itemP.id)" type="button"><i class="las la-pencil-alt"></i></button>
+            </div>
+
+              <h4 class="title_add">{{ itemP.title }} </h4>   
               {{ itemP.body }}
           </li>
         </ul>
         <div class="form__post" *ngIf="postvisible">
-          
-          <form  [formGroup]="formGroup">
+          <form [formGroup]="formGroup">
+            <div class="action__formp">
+              <button (click)="this.postvisible=false;clearForm();">
+                <i class="las la-times"></i>
+              </button>
+            </div>
+            <h3>Add Post</h3>
             <div class="mb-3 post__item">
-              <label for="titlepost" class="form-label post__item__label">Title</label>
-              <input type="text" name="titlepost"  formControlName="titlepost" class="form-control post__item__body" id="titlepost">
+              <label for="title" class="form-label post__item__label">Title</label>
+              <input type="text" name="title"  formControlName="title" class="form-control post__item__body" id="title">
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Body</label>
-              <textarea class="form-control" name="bodypost"  formControlName="bodypost" id="bodypost" ></textarea>
+              <label for="body" class="form-label">Body</label>
+              <textarea class="form-control" name="body"  formControlName="body" id="body" ></textarea>
             </div>
             <div class="form_action">
                 <button class="form_action__btn" (click)="addPost()">Save</button>
